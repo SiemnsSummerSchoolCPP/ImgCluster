@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
-project(BlackjackClient)
+project(ImgCluster)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 file(GLOB srcs "*.cpp" "*.h" "*.hpp")
 file(GLOB includes
