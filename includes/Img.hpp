@@ -14,17 +14,20 @@ public:
 
 	static double computeColorDistance(const Rgb& a, const Rgb& b);
 
-	void printClusters(int nbOfClusters) const;
-	std::vector<Cluster> makeACluster(std::vector<Rgb> clusterGroups) const;
+	int getWidth() const;
+	int getHeight() const;
+	const std::unordered_map<Coord, Rgb>& getColorMap() const;
 	
+	std::vector<Cluster> makeAllClusters(std::vector<Rgb> clusterGroups) const;
 	friend std::ostream& operator << (std::ostream& o, const Img& target);
 
 private:
 	int m_width = 0;
 	int m_height = 0;
 	
-//	std::unordered_map<Coord, Rgb> m_colorMap;
+	std::unordered_map<Coord, Rgb> m_colorMap;
 	
+	std::vector<Cluster> computeClusters(std::vector<Rgb> clusterGroups) const;
 	Rgb getCenter(const std::vector<Coord>& coords) const;
 	
 };

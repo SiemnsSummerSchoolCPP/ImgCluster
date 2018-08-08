@@ -8,21 +8,25 @@ struct Coord
 	int y;
 
 	Coord(int x = 0, int y = 0);
-//	size_t operator () 
+	
+	friend bool operator == (const Coord& lhs, const Coord& rhs)
+	{
+		return (lhs.x == rhs.x) && (lhs.y == rhs.y);
+	}
 	
 	friend std::ostream& operator << (std::ostream& o, const Coord& target);
 };
 
-//namespace std
-//{
-//	template <>
-//	struct hash<Coord>
-//	{
-//		std::size_t operator() (const Coord& k)
-//		{
-//			return
-//				std::hash<int>()(k.x) ^
-//				std::hash<int>()(k.y);
-//		}
-//	};
-//}
+namespace std
+{
+	template<>
+	struct hash<Coord>
+	{
+		size_t operator() (const Coord& k) const
+		{
+			return
+				std::hash<int>()(k.x) ^
+				std::hash<int>()(k.y);
+		}
+	};
+}
